@@ -1,0 +1,61 @@
+{% include  "./header.html"%}
+
+<div class="container">
+    <h3>This is homepage</h3>
+    
+    
+    <h2>Car List</h2>
+
+<form method="get">
+  <label for="make">Make:</label>
+  <input type="text" id="make" name="make" value="{{ make }}">
+
+  <label for="year">Year:</label>
+  <input type="number" id="year" name="year" value="{{ year }}">
+
+  <input type="submit" value="Filter">
+  <a href="{% url 'car_list' %}">Clear Filter</a>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for car in cars %}
+      <tr>
+        <td>{{ car.make }}</td>
+        <td>{{ car.model }}</td>
+        <td>{{ car.year }}</td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="3">No cars found.</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="pagination">
+  <span class="step-links">
+      {% if cars.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ cars.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current-page">{{ cars.number }}</span>
+
+      {% if cars.has_next %}
+          <a href="?page={{ cars.next_page_number }}">next</a>
+          <a href="?page={{ cars.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+  </span>
+</div>
+
+
+  </div>
+  {% include  "./footer.html"%}

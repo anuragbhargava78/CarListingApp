@@ -1,0 +1,40 @@
+{% include  "./header.html"%}
+
+<div class="container">
+    <h3>List Car Page</h3>
+    <p>Please enter the details of car</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  {% include  "./footer.html"%}

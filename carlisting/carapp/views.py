@@ -4,16 +4,10 @@ from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
-
-from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Car
-
-from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from .forms import BuyForm
-from .models import Car
 from decimal import Decimal
 
 
